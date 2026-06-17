@@ -1,5 +1,4 @@
 import { DataTypes } from "sequelize";
-import connectDB from "../helper/dbConnection.js";
 
 const userModel = {
   user_id: {
@@ -18,16 +17,22 @@ const userModel = {
   mobile: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  last_login : {
+  role: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
+  },
+  last_login: {
     type: DataTypes.DATE,
     allowNull: true,
   },
@@ -37,20 +42,24 @@ const userModel = {
   },
 };
 
-let user = null;
-const inituserModel = async () => {
-  try {
-    if (user) return user;
-    const sequelize = await connectDB();
-    user = sequelize.define("usermodel", userModel, {
-      freezeTableName: true,
-    });
+let User = null;
 
-    await user.sync({ alter: true });
-    return user;
-  } catch (err) {
-    console.log("user model", err.message);
-  }
+export const initUserModel = (sequelize) => {
+  if (User) return User;
+
+  User = sequelize.define("usermodel", userModel, {
+    freezeTableName: true,
+  });
+
+
+
+  return User;
 };
 
-export default inituserModel;
+export const getUserModel = () => {
+  if (!User) {
+    throw new Error("User model is not initialized. Call initModels() first.");
+  }
+
+  return User;
+};

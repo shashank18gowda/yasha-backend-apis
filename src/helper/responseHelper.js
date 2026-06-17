@@ -1,6 +1,6 @@
 const send = (res, responseData, data = {}) => {
     const { code, message } = responseData;
-    return res.send({
+    return res.status(code).send({
       responseCode: code,
       responseMessage: message,
       responseData: data,

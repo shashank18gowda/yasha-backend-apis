@@ -15,6 +15,10 @@ export const RESPONSE = {
     code: 203,
     message: "is invalid",
   },
+  ALRDY_EXIST: {
+    code: 204,
+    message: "already exists",
+  },
 
   UNKNOWN_ERROR: {
     code: 500,

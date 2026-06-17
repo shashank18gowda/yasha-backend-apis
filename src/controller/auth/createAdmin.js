@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { send, setErrResMsg } from "../../helper/responseHelper.js";
 import { RESPONSE } from "../../config/global.js";
-import { HASH_ROUND, ROLE, STATE } from "../../config/constant.js";
-import initusermodel from "../../model/users.js";
+import { ROLE, STATE } from "../../config/constant.js";
+import { getUserModel } from "../../model/users.js";
 import CryptoJS from "crypto-js";
 
 const router = Router();
@@ -12,7 +12,7 @@ export default router.post("/", async (req, res) => {
     const { first_name, last_name, mobile, email, password, confirm_password } =
       req.body || {};
 
-    let userModel = await initusermodel();
+    const userModel = getUserModel();
 
     if (first_name == "" || first_name == undefined) {
       return send(res, setErrResMsg(RESPONSE.REQUIRED, "first_name"));
