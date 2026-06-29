@@ -1,6 +1,8 @@
 export const ROLE = {
   ADMIN: 1,
-  USER: 2,
+  STUDENT: 2,
+  PARENT: 3,
+  TRAINER: 4,
 };
 
 export const HASH_ROUND = 10;

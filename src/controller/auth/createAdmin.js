@@ -12,7 +12,7 @@ export default router.post("/", async (req, res) => {
     const { first_name, last_name, mobile, email, password, confirm_password } =
       req.body || {};
 
-    const userModel = getUserModel();
+    const userModel = await getUserModel();
 
     if (first_name == "" || first_name == undefined) {
       return send(res, setErrResMsg(RESPONSE.REQUIRED, "first_name"));

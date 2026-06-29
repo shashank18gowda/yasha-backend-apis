@@ -22,6 +22,12 @@ export const RESPONSE = {
 
   UNKNOWN_ERROR: {
     code: 500,
-    message: "unknown error",
+    message: "Unknown error",
+  }, ACCESS_DENIED: {
+    code: 400,
+    message: "Access denied",
+  },INVALID_TOKEN: {
+    code: 401,
+    message: "Invalid token",
   },
 };

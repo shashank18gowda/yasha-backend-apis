@@ -6,6 +6,10 @@ import { initgradeModel } from "./grades.js";
 export const initModels = (sequelize) => {
   console.log("Initializing models...");
   const user = initUserModel(sequelize);
+
+    //  user.sync({ alter: true });
+    // console.log("Database synced in development mode.");
+
   const student = initstudentModel(sequelize);
   const subject = initsubjectModel(sequelize);
   const grade = initgradeModel(sequelize);

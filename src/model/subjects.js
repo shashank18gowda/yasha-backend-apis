@@ -6,8 +6,15 @@ const subjectModel = {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
   },
- 
- 
+  subject: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  subject_code: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+
   isactive: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
@@ -28,7 +35,9 @@ export const initsubjectModel = (sequelize) => {
 
 export const getsubjectModel = () => {
   if (!subject) {
-    throw new Error("subject model is not initialized. Call initModels() first.");
+    throw new Error(
+      "subject model is not initialized. Call initModels() first.",
+    );
   }
 
   return subject;
