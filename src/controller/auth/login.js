@@ -22,8 +22,6 @@ export default router.post("/", async (req, res) => {
       return send(res, setErrResMsg(RESPONSE.REQUIRED, "password"));
     }
 
-   
-
     let userData = await userModel.findOne({
       where: {
         isactive: STATE.ACTIVE,
@@ -40,13 +38,19 @@ export default router.post("/", async (req, res) => {
       if (decryptPassword == password) {
         const token = jwt.sign(
           {
-            id: userData.account_id,
+            id: userData.user_id,
             role: userData.role,
-            name: userData.name,
-            phone: userData.phone,
-            email: userData.email,
           },
           process.env.TOKEN_KEY,
+        );
+
+        await userModel.update(
+          { last_login: new Date() },
+          {
+            where: {
+              user_id: userData.user_id,
+            },
+          },
         );
 
         return send(res, RESPONSE.SUCCESS, {

@@ -19,14 +19,19 @@ export const RESPONSE = {
     code: 204,
     message: "already exists",
   },
-
+  NOT_FOUND: {
+    code: 205,
+    message: "not found",
+  },
   UNKNOWN_ERROR: {
     code: 500,
     message: "Unknown error",
-  }, ACCESS_DENIED: {
+  },
+  ACCESS_DENIED: {
     code: 400,
     message: "Access denied",
-  },INVALID_TOKEN: {
+  },
+  INVALID_TOKEN: {
     code: 401,
     message: "Invalid token",
   },
