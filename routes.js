@@ -3,6 +3,8 @@ import subjectApiHandler from "./src/controller/masterdata/subjects/apiHandler.j
 import schoolApiHandler from "./src/controller/masterdata/school/apiHandler.js";
 import interestApiHandler from "./src/controller/masterdata/interest/apiHandler.js";
 import gradeApiHandler from "./src/controller/masterdata/grade/apiHandler.js";
+import lmsApiHandler from "./src/controller/lms/apiHandler.js";
+import counselingApiHandler from "./src/controller/counseling/apiHandler.js";
 
 
 export const router = (app) => {
@@ -10,6 +12,7 @@ export const router = (app) => {
   app.use("/api/masterdata/subject", subjectApiHandler);
   app.use("/api/masterdata/school", schoolApiHandler);
   app.use("/api/masterdata/interest", interestApiHandler);
-  app.use("/api/masterdata/interest", interestApiHandler);
   app.use("/api/masterdata/grade", gradeApiHandler);
+  app.use("/api/lms", lmsApiHandler);
+  app.use("/api/counseling", counselingApiHandler);
 }
